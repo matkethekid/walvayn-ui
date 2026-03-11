@@ -5,10 +5,6 @@ import "../globals.css";
 
 const locales = ["hr", "en"];
 
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
-
 export default async function LocaleLayout({ children, params }: any) {
   const { locale } = await params;
 

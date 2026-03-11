@@ -127,3 +127,26 @@
     @apply font-sans;
   }
 }
+
+.navbar-link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.navbar-link::after {
+  content: "";
+  position: absolute;
+  right: 0%;
+  top: 40%;
+  transform: translate(0%, -50%);
+  width: 0;
+  height: 5px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+  left: 0;
+}

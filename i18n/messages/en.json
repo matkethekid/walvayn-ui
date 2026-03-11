@@ -1,0 +1,11 @@
+{
+  "HomePage": {
+    "title": "Hello world!"
+  },
+  "Navbar": {
+    "homeLink": "home",
+    "shopLink": "shop",
+    "bestsellerLink": "best seller",
+    "contactLink": "contact"
+  }
+}

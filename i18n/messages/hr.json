@@ -1,0 +1,11 @@
+{
+  "HomePage": {
+    "title": "Hello world!"
+  },
+  "Navbar": {
+    "homeLink": "home",
+    "shopLink": "trgovina",
+    "bestsellerLink": "best seller",
+    "contactLink": "kontakt"
+  }
+}

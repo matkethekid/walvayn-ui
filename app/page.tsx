@@ -25,8 +25,8 @@ export default function Home() {
               prioriteti
             </h1>
           </div>
-          <div className='flex flex-row items-center justify-center w-full z-10 pb-10'>
-            <div className="flex flex-row items-center w-full 2xl:justify-end group px-3 sm:px-10">
+          <div className='flex flex-row w-full z-10 pb-10 2xl:justify-end'>
+            <div className="flex flex-row items-center group px-3 sm:px-10">
               <Link href={"/trgovina"} className='relative overflow-hidden uppercase w-64 lg:w-80 h-16 lg:h-24 flex items-center justify-center bg-white/10 backdrop-blur-sm border border-gray-100/10 text-white rounded-full text-2xl lg:text-3xl font-bold'>
                 <span className='absolute transition-all duration-300 cubic-bounce group-hover:-translate-y-[350%]'>
                   kreni

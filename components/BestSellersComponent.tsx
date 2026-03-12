@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, ShoppingBag } from "lucide-react";
+import { ArrowRight, Eye, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import { Button } from "./ui/button";
@@ -98,8 +98,13 @@ const BestSellersComponent = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-5 md:p-10 bg-white">
         {filteredItems.map((item, index) => (
-          <div key={index} className="flex flex-col group cursor-pointer">
+          <div key={index} className="flex flex-col group cursor-pointer group relative">
             <div className="relative aspect-4/5 w-full bg-[#f6f6f6] overflow-hidden">
+              <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                <Eye className="text-white w-15 h-15" />
+              </div>
+              <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-[0.4] z-9 transition-opacity duration-500 pointer-events-none"></div>
+              <Image src="/noise.svg" alt="noise" fill className="opacity-0 group-hover:opacity-[0.5] transition-opacity duration-500 pointer-events-none absolute inset-0 z-10 object-cover"/>
               <Image src={item.thumbnailImage} alt={item.name} fill className="object-cover"/>
             </div>
             <div className="mt-3 flex flex-col gap-1">

@@ -21,7 +21,7 @@ const Navbar = () => {
   ];
   const [isSidebarOpened, setIsSidebarOpened] = useState<boolean>(false);
   return (
-    <nav className="w-full pt-5 pb-5 pl-10 pr-10 bg-white flex flex-col lg:flex-row items-center justify-between">
+    <nav className="fixed z-50 w-full pt-5 pb-5 pl-10 pr-10 bg-white flex flex-col lg:flex-row items-center justify-between">
       <div className="flex flex-row justify-between items-center w-full lg:w-auto">
         <h1 className={`${isSidebarOpened ? "text-white" : "text-black"} uppercase ${gudlakExtraBold.className} text-[2.188rem] z-101 flex`}>walvayn</h1>
         <Button className={isSidebarOpened ? "hidden" : "flex lg:hidden p-5 rounded-xl z-101"} onClick={() => setIsSidebarOpened(true)}><Menu className="size-5"/></Button>

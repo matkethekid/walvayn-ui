@@ -1,3 +1,4 @@
+import BestSellersComponent from "@/components/BestSellersComponent";
 import Navbar from "@/components/Navbar";
 import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
@@ -5,9 +6,9 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="h-screen w-full flex flex-col">
+    <div className="min-h-screen w-full flex flex-col">
       <Navbar />
-      <main className="flex h-full w-full relative overflow-hidden">
+      <main className="flex h-screen w-full relative overflow-hidden">
         <div className="absolute inset-0 -z-10"> 
           <video autoPlay muted loop className="fixed top-0 left-0 min-w-full min-h-full object-cover">
             <source src="/3555722-hd_1920_1080_18fps.mp4" type="video/mp4"/>
@@ -24,8 +25,8 @@ export default function Home() {
               prioriteti
             </h1>
           </div>
-          <div className='flex flex-row items-center justify-center w-full z-10 group pb-10'>
-            <div className="flex flex-row items-center w-full 2xl:justify-end gap-2 sm:gap-4 px-3 sm:px-10">
+          <div className='flex flex-row items-center justify-center w-full z-10 pb-10'>
+            <div className="flex flex-row items-center w-full 2xl:justify-end group px-3 sm:px-10">
               <Link href={"/trgovina"} className='relative overflow-hidden uppercase w-64 lg:w-80 h-16 lg:h-24 flex items-center justify-center bg-white/10 backdrop-blur-sm border border-gray-100/10 text-white rounded-full text-2xl lg:text-3xl font-bold'>
                 <span className='absolute transition-all duration-300 cubic-bounce group-hover:-translate-y-[350%]'>
                   kreni
@@ -41,6 +42,7 @@ export default function Home() {
           </div>
         </div>
       </main>
+      <BestSellersComponent/>
     </div>
   );
 }

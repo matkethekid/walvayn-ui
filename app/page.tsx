@@ -1,5 +1,9 @@
-import { redirect } from 'next/navigation';
+import Navbar from "@/components/Navbar";
 
-export default function RootPage() {
-  redirect('/hr');
+export default function Home() {
+  return (
+    <div className="min-h-screen w-full flex flex-col">
+      <Navbar />
+    </div>
+  );
 }

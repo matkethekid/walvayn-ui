@@ -1,3 +1,4 @@
+import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 import { Metadata } from "next";
 import localFont from "next/font/local";
@@ -15,7 +16,9 @@ export default async function RootLayout({ children }: any) {
   return (
     <html lang={'hr'}>
       <body className={`antialiased ${gudlakExtraBold.className}`}>
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

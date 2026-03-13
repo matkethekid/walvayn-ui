@@ -33,9 +33,9 @@ const itemsInCollection: itemInCollection[] = [
     id: 0,
     name: "Sportswear Tech Fleece",
     price: 120,
-    onSale: false,
-    salePrice: 0,
-    salePercent: 0,
+    onSale: true,
+    salePrice: 84,
+    salePercent: 30,
     preferredUrl: "tech-fleece-nike-syna-world",
     thumbnailImage: "/products/techfleece3.avif",
     sex: "f",
@@ -57,9 +57,9 @@ const itemsInCollection: itemInCollection[] = [
     id: 2,
     name: "Tech Fleece Olive",
     price: 120,
-    onSale: false,
-    salePrice: 0,
-    salePercent: 0,
+    onSale: true,
+    salePrice: 110,
+    salePercent: 10,
     preferredUrl: "tech-fleece-olive",
     thumbnailImage: "/products/techfleece4.avif",
     sex: "m",
@@ -69,9 +69,9 @@ const itemsInCollection: itemInCollection[] = [
     id: 3,
     name: "Tech Fleece Oliveeee",
     price: 120,
-    onSale: false,
-    salePrice: 0,
-    salePercent: 0,
+    onSale: true,
+    salePrice: 100,
+    salePercent: 20,
     preferredUrl: "tech-fleece-olive",
     thumbnailImage: "/products/techfleece4.avif",
     sex: "m",
@@ -80,10 +80,10 @@ const itemsInCollection: itemInCollection[] = [
   {
     id: 4,
     name: "Tech Fleece Oliveaa",
-    price: 120,
-    onSale: false,
-    salePrice: 0,
-    salePercent: 0,
+    price: 100,
+    onSale: true,
+    salePrice: 50,
+    salePercent: 50,
     preferredUrl: "tech-fleece-olive",
     thumbnailImage: "/products/techfleece4.avif",
     sex: "m",
@@ -98,6 +98,12 @@ const SaleComponent = () => {
     const filteredItems = collection === "sve" 
         ? itemsInCollection
         : itemsInCollection.filter(item => item.collection === collection);
+
+    const calculateDiscount = (price: number, percent: number) => {
+        if (percent <= 0) return price;
+        const discount = (price * percent) / 100;
+        return Math.round(price - discount);
+    };
   return (
     <section className='w-full min-h-screen bg-white gap-3 pt-10 pb-10 pl-3 pr-3 lg:p-10 flex flex-col'>
       <div className="flex flex-col lg:flex-row w-full justify-center lg:justify-between">
@@ -129,33 +135,38 @@ const SaleComponent = () => {
             {filteredItems.map((item, index) => (
                 <SwiperSlide key={index}>
                     <div className="flex flex-col group cursor-pointer group relative">
-                        <div className="relative aspect-4/5 w-full bg-[#f6f6f6] overflow-hidden">
-                        <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                            <Eye className="text-white w-15 h-15" />
-                        </div>
-                        <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-[0.4] z-9 transition-opacity duration-500 pointer-events-none"></div>
-                        <Image src="/noise.svg" alt="noise" fill className="opacity-0 group-hover:opacity-[0.5] transition-opacity duration-500 pointer-events-none absolute inset-0 z-10 object-cover"/>
-                        <Image src={item.thumbnailImage} alt={item.name} fill className="object-cover"/>
-                        </div>
-                        <div className="mt-3 flex flex-col gap-1">
-                        <h3 className="text-black font-medium text-base leading-tight">
-                            {item.name}
-                        </h3>
-                        <h4 className="text-black font-medium text-base leading-tight">
-                            <span className={`${inter.className} font-semibold text-[#707072]`}>{item.sex === "m" ? "Muški" : "Ženski"}</span>
-                        </h4>
-                        <div className={`mt-2 font-medium text-base ${inter.className} font-bold`}>
-                            {item.onSale ? (
-                            <div className="flex gap-2">
-                                <span className={`font-bold ${inter.className}`}>{item.salePrice}€</span>
-                                <span className={`text-[#707072] line-through font-bold ${inter.className}`}>{item.price}€</span>
-                                <span className={`text-[#007b55] ${inter.className} font-bold`}>{item.salePercent}% popust</span>
+                        <Link href={"/trgovina"}>
+                            <div className="relative aspect-4/5 w-full bg-[#f6f6f6] overflow-hidden">
+                                <div className="absolute top-0 right-0 pt-3 pb-3 pl-5 pr-5 text-white bg-black z-50">
+                                    <span className="uppercase text-sm">akcija</span>
+                                </div>
+                                <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                                    <Image src={"/eye.svg"} alt="eye" width={65} height={65} className="opacity-[0.8]"/>
+                                </div>
+                                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-[0.4] z-9 transition-opacity duration-500 pointer-events-none"></div>
+                                    <Image src="/noise.svg" alt="noise" fill className="opacity-0 group-hover:opacity-[0.4] transition-opacity duration-500 pointer-events-none absolute inset-0 z-10 object-cover"/>
+                                    <Image src={item.thumbnailImage} alt={item.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" priority={index < 4}/>
+                                </div>
+                                <div className="mt-3 flex flex-col gap-1">
+                                <h3 className="text-black font-medium text-base leading-tight">
+                                    {item.name}
+                                </h3>
+                                <h4 className="text-black font-medium text-base leading-tight">
+                                    <span className={`${inter.className} font-semibold text-[#707072]`}>{item.sex === "m" ? "Muški" : "Ženski"}</span>
+                                </h4>
+                                <div className={`mt-2 font-medium text-base ${inter.className} font-bold`}>
+                                    {item.onSale ? (
+                                    <div className="flex gap-2">
+                                        <span className={`font-bold ${inter.className}`}>{calculateDiscount(item.price, item.salePercent)}€</span>
+                                        <span className={`text-[#707072] line-through font-bold ${inter.className}`}>{item.price}€</span>
+                                        <span className={`text-[#007b55] ${inter.className} font-bold`}>{item.salePercent}% popust</span>
+                                    </div>
+                                    ) : (
+                                    <span className={`font-bold ${inter.className}`}>{item.price}€</span>
+                                    )}
+                                </div>
                             </div>
-                            ) : (
-                            <span className={`font-bold ${inter.className}`}>{item.price}€</span>
-                            )}
-                        </div>
-                        </div>
+                        </Link>
                     </div>
                 </SwiperSlide>
             ))}

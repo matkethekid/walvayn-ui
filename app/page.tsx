@@ -1,5 +1,6 @@
 import BestSellersComponent from "@/components/BestSellersComponent";
 import Navbar from "@/components/Navbar";
+import SaleComponent from "@/components/SaleComponent";
 import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -43,6 +44,7 @@ export default function Home() {
         </div>
       </main>
       <BestSellersComponent/>
+      <SaleComponent/>
     </div>
   );
 }

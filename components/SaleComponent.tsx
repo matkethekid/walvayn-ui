@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight, Eye } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Inter } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
@@ -132,44 +132,44 @@ const SaleComponent = () => {
       </div>
       <div className="p-5 md:p-10 bg-white">
         <Swiper key={collection} modules={[Navigation]} slidesPerView={1} spaceBetween={50} allowTouchMove={false} breakpoints={{ 640: { slidesPerView: 1 }, 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }} onSwiper={(swiper) => setSwiperInstance(swiper)}>
-            {filteredItems.map((item, index) => (
-                <SwiperSlide key={index}>
-                    <div className="flex flex-col group cursor-pointer group relative">
-                        <Link href={"/trgovina"}>
-                            <div className="relative aspect-4/5 w-full bg-[#f6f6f6] overflow-hidden">
-                                <div className="absolute top-0 right-0 pt-3 pb-3 pl-5 pr-5 text-white bg-black z-50">
-                                    <span className="uppercase text-sm">akcija</span>
-                                </div>
-                                <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                                    <Image src={"/eye.svg"} alt="eye" width={65} height={65} className="opacity-[0.8]"/>
-                                </div>
-                                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-[0.4] z-9 transition-opacity duration-500 pointer-events-none"></div>
-                                    <Image src="/noise.svg" alt="noise" fill className="opacity-0 group-hover:opacity-[0.4] transition-opacity duration-500 pointer-events-none absolute inset-0 z-10 object-cover"/>
-                                    <Image src={item.thumbnailImage} alt={item.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" priority={index < 4}/>
-                                </div>
-                                <div className="mt-3 flex flex-col gap-1">
-                                <h3 className="text-black font-medium text-base leading-tight">
-                                    {item.name}
-                                </h3>
-                                <h4 className="text-black font-medium text-base leading-tight">
-                                    <span className={`${inter.className} font-semibold text-[#707072]`}>{item.sex === "m" ? "Muški" : "Ženski"}</span>
-                                </h4>
-                                <div className={`mt-2 font-medium text-base ${inter.className} font-bold`}>
-                                    {item.onSale ? (
-                                    <div className="flex gap-2">
-                                        <span className={`font-bold ${inter.className}`}>{calculateDiscount(item.price, item.salePercent)}€</span>
-                                        <span className={`text-[#707072] line-through font-bold ${inter.className}`}>{item.price}€</span>
-                                        <span className={`text-[#007b55] ${inter.className} font-bold`}>{item.salePercent}% popust</span>
-                                    </div>
-                                    ) : (
-                                    <span className={`font-bold ${inter.className}`}>{item.price}€</span>
-                                    )}
-                                </div>
-                            </div>
-                        </Link>
-                    </div>
-                </SwiperSlide>
-            ))}
+          {filteredItems.map((item, index) => (
+            <SwiperSlide key={index}>
+              <div className="flex flex-col group cursor-pointer group relative">
+                  <Link href={"/trgovina"}>
+                      <div className="relative aspect-4/5 w-full bg-[#f6f6f6] overflow-hidden">
+                          <div className="absolute top-0 right-0 pt-3 pb-3 pl-5 pr-5 text-white bg-black z-50">
+                            <span className="uppercase text-sm">akcija</span>
+                          </div>
+                          <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                            <Image src={"/eye.svg"} alt="eye" width={65} height={65} className="opacity-[0.8]"/>
+                          </div>
+                          <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-[0.4] z-9 transition-opacity duration-500 pointer-events-none"></div>
+                            <Image src="/noise.svg" alt="noise" fill className="opacity-0 group-hover:opacity-[0.4] transition-opacity duration-500 pointer-events-none absolute inset-0 z-10 object-cover"/>
+                            <Image src={item.thumbnailImage} alt={item.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" priority={index < 4}/>
+                          </div>
+                          <div className="mt-3 flex flex-col gap-1">
+                          <h3 className="text-black font-medium text-base leading-tight">
+                            {item.name}
+                          </h3>
+                          <h4 className="text-black font-medium text-base leading-tight">
+                            <span className={`${inter.className} font-semibold text-[#707072]`}>{item.sex === "m" ? "Muški" : "Ženski"}</span>
+                          </h4>
+                          <div className={`mt-2 font-medium text-base ${inter.className} font-bold`}>
+                            {item.onSale ? (
+                              <div className="flex gap-2">
+                                <span className={`font-bold ${inter.className}`}>{calculateDiscount(item.price, item.salePercent)}€</span>
+                                <span className={`text-[#707072] line-through font-bold ${inter.className}`}>{item.price}€</span>
+                                <span className={`text-[#007b55] ${inter.className} font-bold`}>{item.salePercent}% popust</span>
+                              </div>
+                              ) : (
+                              <span className={`font-bold ${inter.className}`}>{item.price}€</span>
+                            )}
+                          </div>
+                        </div>
+                    </Link>
+                </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
         <div className="mt-10 w-full flex flex-row lg:gap-5 justify-between lg:justify-end">
             <Button onClick={() => swiperInstance?.slidePrev()} className="rounded-full w-12 h-12 lg:w-14.5 lg:h-14.5 cursor-pointer bg-black text-center"><ChevronLeft /></Button>

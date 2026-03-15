@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 
 const gudlakExtraBold = localFont({
   src: "./fonts/GudlakExtraBold.woff2",
+  display: 'swap'
 });
 
 export default async function RootLayout({ children }: any) {

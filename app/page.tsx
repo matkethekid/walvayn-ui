@@ -1,10 +1,14 @@
 import BestSellersComponent from "@/components/BestSellersComponent";
 import Navbar from "@/components/Navbar";
-import SaleComponent from "@/components/SaleComponent";
 import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "@/components/Footer";
+import dynamic from "next/dynamic";
+import SaleComponent from "@/components/SaleComponent";
+
+const Footer = dynamic(() => import("@/components/Footer"), {
+  ssr: true,
+});
 
 export default function Home() {
   return (
@@ -12,8 +16,9 @@ export default function Home() {
       <Navbar />
       <main className="flex h-screen w-full relative overflow-hidden">
         <div className="absolute inset-0 -z-10"> 
-          <video autoPlay muted loop className="fixed top-0 left-0 min-w-full min-h-full object-cover">
-            <source src="/3555722-hd_1920_1080_18fps.mp4" type="video/mp4"/>
+          <video autoPlay muted loop playsInline poster="/videoposter.png" className="fixed top-0 left-0 min-w-full min-h-full object-cover">
+            <source src="/herovideo2.webm" type="video/webm"/>
+            <source src="/herovideo2.mp4" type="video/mp4"/>
           </video>
         </div>
         <div className="absolute inset-0 w-full h-full bg-black opacity-[0.4] z-2"></div>
@@ -22,7 +27,7 @@ export default function Home() {
         </div>
         <div className="w-full h-full items-end justify-end 2xl:justify-center z-30 gap-5 2xl:gap-0 flex flex-col 2xl:flex-row ">
           <div className="w-full flex flex-col z-3 bottom-0 left-0 gap-5 pl-3 pr-3 sm:pl-10 sm:pr-10">
-            <h5 className="uppercase text-white leading-none">// based in zg</h5>
+            <p className="uppercase text-white leading-none">// based in zg</p>
             <h1 className="uppercase leading-none text-white text-[clamp(3.5rem,12vw,12.5rem)]">
               prioriteti
             </h1>

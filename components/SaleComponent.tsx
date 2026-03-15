@@ -126,9 +126,9 @@ const SaleComponent = () => {
         </div>
       </div>
       <div className="w-full p-5 flex flex-wrap gap-5">
-        <Button onClick={() => setCollection("sve")} className={`uppercase p-5 transition-all duration-400 ${collection === "sve" ? "bg-black text-white" : "bg-gray-100 border border-gray-300 text-black"} rounded-full items-center justify-center cursor-pointer`}>sve kolekcije</Button>
-        <Button onClick={() => setCollection("zima")} className={`uppercase p-5 transition-all duration-400 ${collection === "zima" ? "bg-black text-white" : "bg-gray-100 border border-gray-300 text-black"} rounded-full items-center justify-center cursor-pointer`}>zima</Button>
-        <Button onClick={() => setCollection("ljeto")} className={`uppercase p-5 transition-all duration-400 ${collection === "ljeto" ? "bg-black text-white" : "bg-gray-100 border border-gray-300 text-black"} rounded-full items-center justify-center cursor-pointer`}>ljeto</Button>
+        <Button aria-label="Izaberi sve kolekcije" onClick={() => setCollection("sve")} className={`uppercase p-5 transition-all duration-400 ${collection === "sve" ? "bg-black text-white" : "bg-gray-100 border border-gray-300 text-black"} rounded-full items-center justify-center cursor-pointer`}>sve kolekcije</Button>
+        <Button aria-label="Izaberi zimsku kolekciju" onClick={() => setCollection("zima")} className={`uppercase p-5 transition-all duration-400 ${collection === "zima" ? "bg-black text-white" : "bg-gray-100 border border-gray-300 text-black"} rounded-full items-center justify-center cursor-pointer`}>zima</Button>
+        <Button aria-label="Izaberi ljetnju kolekciju" onClick={() => setCollection("ljeto")} className={`uppercase p-5 transition-all duration-400 ${collection === "ljeto" ? "bg-black text-white" : "bg-gray-100 border border-gray-300 text-black"} rounded-full items-center justify-center cursor-pointer`}>ljeto</Button>
       </div>
       <div className="p-5 md:p-10 bg-white">
         <Swiper key={collection} modules={[Navigation]} slidesPerView={1} spaceBetween={50} allowTouchMove={false} breakpoints={{ 640: { slidesPerView: 1 }, 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }} onSwiper={(swiper) => setSwiperInstance(swiper)}>
@@ -172,8 +172,8 @@ const SaleComponent = () => {
           ))}
         </Swiper>
         <div className="mt-10 w-full flex flex-row lg:gap-5 justify-between lg:justify-end">
-            <Button onClick={() => swiperInstance?.slidePrev()} className="rounded-full w-12 h-12 lg:w-14.5 lg:h-14.5 cursor-pointer bg-black text-center"><ChevronLeft /></Button>
-            <Button onClick={() => swiperInstance?.slideNext()} className="rounded-full w-12 h-12 lg:w-14.5 lg:h-14.5 cursor-pointer bg-black text-center"><ChevronRight /></Button>
+            <Button aria-label="Prethodni slajd" onClick={() => swiperInstance?.slidePrev()} className="rounded-full w-12 h-12 lg:w-14.5 lg:h-14.5 cursor-pointer bg-black text-center"><ChevronLeft /></Button>
+            <Button aria-label="Naredni slajd" onClick={() => swiperInstance?.slideNext()} className="rounded-full w-12 h-12 lg:w-14.5 lg:h-14.5 cursor-pointer bg-black text-center"><ChevronRight /></Button>
         </div>
       </div>
     </section>

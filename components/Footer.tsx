@@ -26,7 +26,7 @@ const Footer = () => {
               <input className="p-2 sm:p-3 text-sm sm:text-base bg-white text-black focus-visible:ring-0 ring-0 rounded-md placeholder:font-semibold placeholder:text-black" placeholder="Email*"/>
               <Button aria-label="Pretplati se" type="button" className="w-12.5 h-12.5 rounded-full bg-white text-black cursor-pointer"><ChevronRight/></Button>
             </div>
-            <p className={`${inter.className} text-gray-400 max-w-xl text-sm`}>Prijavom na newsletter pristaješ na naše uslove korišćenja i pravila privatnosti. Obećavamo da ne šaljemo spam, samo dropove i popuste.</p>
+            <p className={`${inter.className} text-gray-300 max-w-xl text-sm`}>Prijavom na newsletter pristaješ na naše uslove korišćenja i pravila privatnosti. Obećavamo da ne šaljemo spam, samo dropove i popuste.</p>
           </div>
           <div className="flex flex-col w-full gap-5 lg:flex-row lg:gap-20 p-3 lg:w-[60%]">
             <div className="p-3 border border-gray-400/20 border-t-gray-400/20 border-l-transparent lg:border-l-gray-400/20 lg:border-t-transparent border-r-transparent border-b-transparent mt-10 flex flex-col">
@@ -137,7 +137,7 @@ const Footer = () => {
         </div>
         <div className="w-full h-px bg-gray-100/20 mt-10 mb-7"></div>
         <div className="w-full text-center">
-          <p className={`${inter.className} text-gray-500 text-sm`}>Copyright © {year} Walvayn | Sva prava zadržana</p>
+          <p className={`${inter.className} text-gray-300 text-sm`}>Copyright © {year} Walvayn | Sva prava zadržana</p>
         </div>
       </div>
     </footer>

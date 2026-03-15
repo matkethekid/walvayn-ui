@@ -36,7 +36,7 @@ const Navbar = () => {
       </ul>
       <div className={`${gudlakExtraBold.className} hidden lg:block`}>
         <Select value="hrv">
-          <SelectTrigger className="w-full max-w-48 ring-0 focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 outline-none border-0">
+          <SelectTrigger aria-label="Izaberi jezik" className="w-full max-w-48 ring-0 focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 outline-none border-0">
             <SelectValue placeholder="Izaberi jezik" />
           </SelectTrigger>
           <SelectContent className={`${gudlakExtraBold.className}`}>

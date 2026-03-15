@@ -16,7 +16,7 @@ export default function Home() {
       <Navbar />
       <main className="flex h-screen w-full relative overflow-hidden">
         <div className="absolute inset-0 -z-10"> 
-          <video autoPlay muted loop playsInline poster="/videoposter.webm" className="fixed top-0 left-0 min-w-full min-h-full object-cover">
+          <video autoPlay muted loop playsInline poster="/videoposter.webp" className="fixed top-0 left-0 min-w-full min-h-full object-cover">
             <source src="/herovideo2.webm" type="video/webm"/>
             <source src="/herovideo2.mp4" type="video/mp4"/>
           </video>

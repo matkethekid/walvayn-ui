@@ -21,9 +21,9 @@ const Navbar = () => {
   ];
   const [isSidebarOpened, setIsSidebarOpened] = useState<boolean>(false);
   return (
-    <nav className="fixed z-50 w-full pt-5 pb-5 pl-10 pr-10 bg-white flex flex-col lg:flex-row items-center justify-between">
+    <nav className="sticky z-50 top-0 w-full pt-5 pb-5 pl-10 pr-10 bg-white flex flex-col lg:flex-row items-center justify-between">
       <div className="flex flex-row justify-between items-center w-full lg:w-auto">
-        <h1 className={`${isSidebarOpened ? "text-white" : "text-black"} uppercase ${gudlakExtraBold.className} text-[2.188rem] z-101 flex`}>walvayn</h1>
+        <Link href={"/"} className={`${isSidebarOpened ? "text-white" : "text-black"} uppercase ${gudlakExtraBold.className} text-[2.188rem] z-101 flex`}>walvayn</Link>
         <Button aria-label="Otvori meni" className={isSidebarOpened ? "hidden" : "flex lg:hidden p-5 rounded-xl z-101"} onClick={() => setIsSidebarOpened(true)}><Menu className="size-5"/></Button>
         <Button aria-label="Zatvori meni" className={!isSidebarOpened ? "hidden" : "flex lg:hidden p-5 rounded-xl z-101 bg-white"} onClick={() => setIsSidebarOpened(false)}><X className="size-5 text-black"/></Button>
       </div>

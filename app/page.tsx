@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import ClientOnlySale from "@/components/ClientOnlySaleComponent";
+import "swiper/css";
 
 const Footer = dynamic(() => import("@/components/Footer"), {
   ssr: true,

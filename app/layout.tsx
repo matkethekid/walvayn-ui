@@ -1,6 +1,5 @@
 import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
-import "swiper/css";
 import { Metadata } from "next";
 import localFont from "next/font/local";
 

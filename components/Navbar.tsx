@@ -3,7 +3,7 @@
 import { useState } from "react";
 import localFont from "next/font/local";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { HR, US } from "country-flag-icons/react/3x2";
+import { HR } from "country-flag-icons/react/3x2";
 import { Menu, ShoppingBag, X } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";

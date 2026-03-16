@@ -4,6 +4,7 @@ import FilterComponent from '@/components/FilterComponent';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Inter } from 'next/font/google';
+import { Suspense } from 'react';
 
 const gudlakBold = localFont({
   src: "../fonts/GudlakBold.woff2",
@@ -103,41 +104,43 @@ const page = () => {
       <div className='w-full min-h-screen flex-1 flex flex-col lg:flex-row'>
         <aside className="lg:w-[20%] lg:sticky lg:top-20 p-5 lg:h-[calc(100vh-5rem)] overflow-y-auto">
           <h1 className={`${gudlakBold.className} text-2xl text-black mb-10`}>Proizvodi (1570)</h1>
-          <FilterComponent />
+          <Suspense fallback={<div>Učitavanje filtera...</div>}>
+            <FilterComponent />
+          </Suspense>
         </aside>
-        <div className='e-full lg:w-[80%] h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
+        <div className='w-full p-3 lg:w-[80%] h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
           {itemsInCollection.map((item, index) => (
-              <div key={index} className="flex flex-col group cursor-pointer group relative">
-                <Link href={"/trgovina"}>
-                  <div className="relative aspect-4/5 w-full bg-[#f6f6f6] overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                      <Image src={"/eye.svg"} alt="eye" width={65} height={65} className="opacity-[0.8]"/>
-                    </div>
-                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-[0.4] z-9 transition-opacity duration-500 pointer-events-none"></div>
-                      <Image src="/noise.svg" alt="noise" fill className="opacity-0 group-hover:opacity-[0.5] transition-opacity duration-500 pointer-events-none absolute inset-0 z-10 object-cover"/>
-                      <Image src={item.thumbnailImage} alt={item.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" priority={index < 4}/>
-                    </div>
-                    <div className="mt-3 flex flex-col gap-1">
-                    <h3 className="text-black font-medium text-base leading-tight">
-                      {item.name}
-                    </h3>
-                    <h4 className="text-black font-medium text-base leading-tight">
-                      <span className={`${inter.className} font-semibold text-[#707072]`}>{item.sex === "m" ? "Muški" : "Ženski"}</span>
-                    </h4>
-                    <div className={`mt-2 font-medium text-base ${inter.className} font-bold`}>
-                      {item.onSale ? (
-                        <div className="flex gap-2">
-                          <span className={`font-bold ${inter.className}`}>{calculateDiscount(item.price, item.salePercent)}€</span>
-                          <span className={`text-[#707072] line-through font-bold ${inter.className}`}>{item.price}€</span>
-                          <span className={`text-[#007b55] ${inter.className} font-bold`}>{item.salePercent}% popust</span>
-                        </div>
-                        ) : (
-                        <span className={`font-bold ${inter.className}`}>{item.price}€</span>
-                      )}
-                    </div>
+            <div key={index} className="flex flex-col group cursor-pointer group relative mb-3">
+              <Link href={"/trgovina"}>
+                <div className="relative aspect-4/5 w-full bg-[#f6f6f6] overflow-hidden">
+                  <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    <Image src={"/eye.svg"} alt="eye" width={65} height={65} className="opacity-[0.8]"/>
                   </div>
-                </Link>
-              </div>
+                  <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-[0.4] z-9 transition-opacity duration-500 pointer-events-none"></div>
+                    <Image src="/noise.svg" alt="noise" fill className="opacity-0 group-hover:opacity-[0.5] transition-opacity duration-500 pointer-events-none absolute inset-0 z-10 object-cover"/>
+                    <Image src={item.thumbnailImage} alt={item.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" priority={index < 4}/>
+                  </div>
+                  <div className="mt-3 flex flex-col gap-1">
+                  <h3 className="text-black font-medium text-base leading-tight">
+                    {item.name}
+                  </h3>
+                  <h4 className="text-black font-medium text-base leading-tight">
+                    <span className={`${inter.className} font-semibold text-[#707072]`}>{item.sex === "m" ? "Muški" : "Ženski"}</span>
+                  </h4>
+                  <div className={`mt-2 font-medium text-base ${inter.className} font-bold`}>
+                    {item.onSale ? (
+                      <div className="flex gap-2">
+                        <span className={`font-bold ${inter.className}`}>{calculateDiscount(item.price, item.salePercent)}€</span>
+                        <span className={`text-[#707072] line-through font-bold ${inter.className}`}>{item.price}€</span>
+                        <span className={`text-[#007b55] ${inter.className} font-bold`}>{item.salePercent}% popust</span>
+                      </div>
+                      ) : (
+                      <span className={`font-bold ${inter.className}`}>{item.price}€</span>
+                    )}
+                  </div>
+                </div>
+              </Link>
+          </div>
           ))}
         </div>
       </div>

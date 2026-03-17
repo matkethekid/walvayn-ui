@@ -71,7 +71,7 @@ const FilterComponent = () => {
   };
   return (
     <>
-      <Button onClick={() => setIsHidden(prevState => !prevState)} className='flex mb-10 justify-center items-center lg:hidden p-4 text-base rounded-full bg-black' aria-label='Otvori filter meni'>Filteri <SlidersHorizontal /></Button>
+      <Button onClick={() => setIsHidden(prevState => !prevState)} className='flex lg:mb-10 justify-center items-center lg:hidden p-4 text-base rounded-full bg-black' aria-label='Otvori filter meni'>Filteri <SlidersHorizontal /></Button>
       <div className={`${isHidden ? "hidden" : "block"} lg:block h-screen fixed inset-0 z-50 bg-white p-6 lg:relative lg:p-0 lg:z-0`}>
         <div className="flex justify-between items-center mb-8 lg:hidden">
           <h2 className="text-xl font-bold">Filteri</h2>

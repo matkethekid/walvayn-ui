@@ -53,7 +53,7 @@ const ShopComponent = ({ itemsInCollection }: Props) => {
             <div className='w-full p-3 h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
                 {filteredItems.map((item: itemInCollection, index: number) => (
                     <div key={index} className="flex flex-col group cursor-pointer group relative mb-3">
-                        <Link href={"/trgovina"}>
+                        <Link href={"/proizvod/aaa"}>
                         <div className="relative aspect-4/5 w-full bg-[#f6f6f6] overflow-hidden">
                             <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                                 <Image src={"/eye.svg"} alt="eye" width={65} height={65} className="opacity-[0.8]"/>
@@ -70,15 +70,15 @@ const ShopComponent = ({ itemsInCollection }: Props) => {
                                     <span className={`${inter.className} font-semibold text-[#707072]`}>{item.sex === "m" ? "Muški" : "Ženski"}</span>
                                 </h4>
                                 <div className={`mt-2 font-medium text-base ${inter.className} font-bold`}>
-                                {item.onSale ? (
-                                    <div className="flex gap-2">
-                                        <span className={`font-bold ${inter.className}`}>{calculateDiscount(item.price, item.salePercent)}€</span>
-                                        <span className={`text-[#707072] line-through font-bold ${inter.className}`}>{item.price}€</span>
-                                        <span className={`text-[#007b55] ${inter.className} font-bold`}>{item.salePercent}% popust</span>
-                                    </div>
-                                    ) : (
-                                    <span className={`font-bold ${inter.className}`}>{item.price}€</span>
-                                )}
+                                    {item.onSale ? (
+                                        <div className="flex gap-2">
+                                            <span className={`font-bold ${inter.className}`}>{calculateDiscount(item.price, item.salePercent)}€</span>
+                                            <span className={`text-[#707072] line-through font-bold ${inter.className}`}>{item.price}€</span>
+                                            <span className={`text-[#007b55] ${inter.className} font-bold`}>{item.salePercent}% popust</span>
+                                        </div>
+                                        ) : (
+                                        <span className={`font-bold ${inter.className}`}>{item.price}€</span>
+                                    )}
                                 </div>
                             </div>
                         </Link>

@@ -1,8 +1,14 @@
-import React from 'react'
+import Footer from '@/components/Footer';
+import IndividualItem from '@/components/IndividualItem';
+import Navbar from '@/components/Navbar';
 
 const page = () => {
   return (
-    <div>page</div>
+    <div className='w-full min-h-screen bg-gray-50/50'>
+      <Navbar/>
+      <IndividualItem/>
+      <Footer/>
+    </div>
   )
 }
 

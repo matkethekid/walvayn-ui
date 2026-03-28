@@ -33,7 +33,7 @@ const filters = [
     title: "Kolekcija",
     options: [
       { label: "Ljetnja", value: "ljetnja" },
-      { label: "Zimska", value: "zimska" }
+      { label: "zima", value: "zima" }
     ]
   }
 ];

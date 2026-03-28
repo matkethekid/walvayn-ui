@@ -94,7 +94,7 @@ interface Props {
 // ];
 
 const SaleComponent = ({ itemsInCollection }: Props) => {
-  const [collection, setCollection] = useState<"sve" | "zimska" | "ljeto">("sve");
+  const [collection, setCollection] = useState<"sve" | "zima" | "ljeto">("sve");
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
     
   const filteredItems = itemsInCollection?.filter(item => 
@@ -129,7 +129,7 @@ const SaleComponent = ({ itemsInCollection }: Props) => {
       </div>
       <div className="w-full p-5 flex flex-wrap gap-5">
         <Button aria-label="Izaberi sve kolekcije" onClick={() => setCollection("sve")} className={`uppercase p-5 transition-all duration-400 ${collection === "sve" ? "bg-black text-white" : "bg-gray-100 border border-gray-300 text-black"} rounded-full items-center justify-center cursor-pointer`}>sve kolekcije</Button>
-        <Button aria-label="Izaberi zimsku kolekciju" onClick={() => setCollection("zimska")} className={`uppercase p-5 transition-all duration-400 ${collection === "zimska" ? "bg-black text-white" : "bg-gray-100 border border-gray-300 text-black"} rounded-full items-center justify-center cursor-pointer`}>zima</Button>
+        <Button aria-label="Izaberi zimsku kolekciju" onClick={() => setCollection("zima")} className={`uppercase p-5 transition-all duration-400 ${collection === "zima" ? "bg-black text-white" : "bg-gray-100 border border-gray-300 text-black"} rounded-full items-center justify-center cursor-pointer`}>zima</Button>
         <Button aria-label="Izaberi ljetnju kolekciju" onClick={() => setCollection("ljeto")} className={`uppercase p-5 transition-all duration-400 ${collection === "ljeto" ? "bg-black text-white" : "bg-gray-100 border border-gray-300 text-black"} rounded-full items-center justify-center cursor-pointer`}>ljeto</Button>
       </div>
       <div className="w-full h-full p-5 md:p-10 bg-white">

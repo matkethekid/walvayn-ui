@@ -4,8 +4,8 @@ import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import ClientOnlySale from "@/components/ClientOnlySaleComponent";
 import "swiper/css";
+import SaleServerComponent from "@/components/SaleServerComponent";
 
 const Footer = dynamic(() => import("@/components/Footer"), {
   ssr: true,
@@ -51,7 +51,7 @@ export default function Home() {
         </div>
       </main>
       <BestSellersComponent/>
-      <ClientOnlySale/>
+      <SaleServerComponent/>
       <Footer/>
     </div>
   );

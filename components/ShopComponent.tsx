@@ -50,8 +50,10 @@ const ShopComponent = ({ itemsInCollection }: Props) => {
                     </InputGroupAddon>
                 </InputGroup>
             </div>
-            <div className='w-full p-3 h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
-                {filteredItems.map((item: itemInCollection, index: number) => (
+            <div className={`w-full p-3 h-full ${filteredItems.length > 0 ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid"} gap-3`}>
+                {
+                    filteredItems.length > 0 ?
+                    filteredItems.map((item: itemInCollection, index: number) => (
                     <div key={index} className="flex flex-col group cursor-pointer group relative mb-3">
                         <Link href={"/proizvod/aaa"}>
                         <div className="relative aspect-4/5 w-full bg-[#f6f6f6] overflow-hidden">
@@ -83,7 +85,10 @@ const ShopComponent = ({ itemsInCollection }: Props) => {
                             </div>
                         </Link>
                     </div>
-                ))}
+                )) : <div className='w-full h-screen text-center flex items-center justify-center text-xl'>
+                    <p>Nema rezultata.</p>
+                </div>
+                }
             </div>
         </div>
     </>

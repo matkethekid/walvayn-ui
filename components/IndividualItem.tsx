@@ -2,10 +2,9 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "./Navbar";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { ArrowRight, ShoppingBag } from "lucide-react";
+import { ShoppingBag } from "lucide-react";
 
 interface Item {
     id: number;
@@ -28,30 +27,31 @@ interface Props {
     item: Item;
 };
 
-const item: Item = {
-    id: 4,
-    name: "Tech Fleece Oliveaa",
-    price: 120,
-    onSale: true,
-    salePrice: 0,
-    salePercent: 70,
-    preferredUrl: "tech-fleece-olive",
-    thumbnailImage: "/products/techfleece4.avif",
-    sex: "m",
-    collection: "zima",
-    sizes: ["XS", "S", "M", "L"],
-    images: ["/products/techfleece4.avif", "/products/techfleece2.avif", "/products/techfleece3.avif", "/products/techfleece3.avif"],
-    freeShipping: true,
-    description: "Legendarni Nike Windrunner stil dobija dozu vrhunske udobnosti uz naš flis koji je gladak sa obe strane. Uparen je sa opuštenim krojem i tehničkim detaljima, poput prepoznatljivog Tech džepa na rukavu ojačanog trakom, kao i rastegljivih ivica na donjem delu i manžetnama."
-};
+// const item: Item = {
+//     id: 4,
+//     name: "Tech Fleece Oliveaa",
+//     price: 120,
+//     onSale: true,
+//     salePrice: 0,
+//     salePercent: 70,
+//     preferredUrl: "tech-fleece-olive",
+//     thumbnailImage: "/products/techfleece4.avif",
+//     sex: "m",
+//     collection: "zima",
+//     sizes: ["XS", "S", "M", "L"],
+//     images: ["/products/techfleece4.avif", "/products/techfleece2.avif", "/products/techfleece3.avif", "/products/techfleece3.avif"],
+//     freeShipping: true,
+//     description: "Legendarni Nike Windrunner stil dobija dozu vrhunske udobnosti uz naš flis koji je gladak sa obe strane. Uparen je sa opuštenim krojem i tehničkim detaljima, poput prepoznatljivog Tech džepa na rukavu ojačanog trakom, kao i rastegljivih ivica na donjem delu i manžetnama."
+// };
 
 const inter = Inter({
     subsets: ["latin-ext"],
     weight: ["400", "600"]
 });
 
-const IndividualItem = () => {
-    const [selectedImage, setSelectedImage] = useState(item.images[0]);
+const IndividualItem = ({ item }: Props) => {
+    const images = Array.isArray(item.images) ? item.images : JSON.parse(item.images || '[]');
+    const [selectedImage, setSelectedImage] = useState(images[0] || '');
     const [selectedSize, setSelectedSize] = useState<string>("");
 
     const calculateDiscount = (price: number, percent: number) => {
@@ -64,10 +64,10 @@ const IndividualItem = () => {
       <div className="max-w-325 mx-auto px-4 py-8 lg:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">          
             <div className="order-2 lg:order-1 lg:col-span-1 flex lg:flex-col gap-3 overflow-x-hidden lg:overflow-y-auto mx-auto lg:pb-0 scrollbar-hide">
-                {item.images.map((img: any, idx) => (
-                <button key={idx} onClick={() => setSelectedImage(img)} onMouseEnter={() => setSelectedImage(img)} className={`relative w-20 h-20 shrink-0 rounded-xl overflow-hidden border-2 transition-all duration-200 ${selectedImage === img ? "border-black scale-95" : "border-transparent hover:border-gray-300"}`}>
-                    <Image src={img} alt={`Preview ${idx}`} fill className="object-cover" />
-                </button>
+                {images.map((img: any, idx: number) => (
+                    <button key={idx} onClick={() => setSelectedImage(img)} onMouseEnter={() => setSelectedImage(img)} className={`relative w-20 h-20 shrink-0 rounded-xl overflow-hidden border-2 transition-all duration-200 ${selectedImage === img ? "border-black scale-95" : "border-transparent hover:border-gray-300"}`}>
+                        <Image src={img} alt={`Preview ${idx}`} fill className="object-cover" />
+                    </button>
                 ))}
             </div>
             <div className="order-1 lg:order-2 lg:col-span-6">

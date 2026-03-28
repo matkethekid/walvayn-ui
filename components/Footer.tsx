@@ -1,7 +1,10 @@
+"use client";
+
 import { ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const inter = Inter({
   subsets: ["latin-ext"],
@@ -9,8 +12,12 @@ const inter = Inter({
 });
 
 const Footer = () => {
-  const date = new Date();
-  const year = date.getFullYear();
+  const [year, setYear] = useState<number | string>(2025); 
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setYear(new Date().getFullYear());
+  }, []);
   return (
     <footer className="w-full lg:h-[60vh] bg-white p-0 lg:p-5">
       <div className="bg-black shadow-sm rounded-3xl w-full h-full p-10">

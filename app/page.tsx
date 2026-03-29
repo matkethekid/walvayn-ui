@@ -28,7 +28,7 @@ export default function Home() {
         </div>
         <div className="w-full h-full items-end justify-end 2xl:justify-center z-30 gap-5 2xl:gap-0 flex flex-col 2xl:flex-row ">
           <div className="w-full flex flex-col z-3 bottom-0 left-0 gap-5 pl-3 pr-3 sm:pl-10 sm:pr-10">
-            <p className="uppercase text-white leading-none">// based in zg</p>
+            <p className="uppercase text-white leading-none">&#47;&#47; based in zg</p>
             <h1 className="uppercase leading-none text-white text-[clamp(3.5rem,12vw,12.5rem)]">
               prioriteti
             </h1>

@@ -5,6 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { ShoppingBag } from "lucide-react";
+import { useCartStore } from "@/app/store/shoppingCart";
 
 interface Item {
     id: number;
@@ -52,12 +53,25 @@ const inter = Inter({
 const IndividualItem = ({ item }: Props) => {
     const images = Array.isArray(item.images) ? item.images : JSON.parse(item.images || '[]');
     const [selectedImage, setSelectedImage] = useState(images[0] || '');
-    const [selectedSize, setSelectedSize] = useState<string>("");
+    const [selectedSize, setSelectedSize] = useState<string>(item.sizes[0] ||"");
+    const addToCart = useCartStore(state => state.addToCart);
 
     const calculateDiscount = (price: number, percent: number) => {
         if (percent <= 0) return price;
         const discount = (price * percent) / 100;
         return Math.round(price - discount);
+    };
+
+    const addProductToCart = () => {
+        const productPrice = calculateDiscount(item.price, item.salePercent);
+        const product = {
+            id: item.id,
+            name: item.name,
+            price: productPrice,
+            sex: item.sex,
+            size: selectedSize,
+        };
+        addToCart(product);
     };
   return (
     <section className="w-full min-h-screen bg-gray-50/50">
@@ -72,7 +86,7 @@ const IndividualItem = ({ item }: Props) => {
             </div>
             <div className="order-1 lg:order-2 lg:col-span-6">
                 <div className="relative aspect-4/5 w-full bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100">
-                <Image src={selectedImage} alt={item.name} fill priority className="object-cover transition-opacity duration-300"/>
+                    <Image src={selectedImage} alt={item.name} fill priority className="object-cover transition-opacity duration-300"/>
                 </div>
             </div>
             <div className="order-3 lg:col-span-5 flex flex-col gap-6">
@@ -101,13 +115,13 @@ const IndividualItem = ({ item }: Props) => {
                     }
                 </div>
                 <div className="flex flex-row group items-center justify-center lg:justify-start w-full relative">
-                    <button aria-label="Dodaj u torbu" className='relative overflow-hidden cursor-pointer uppercase w-64 lg:w-70 h-16 lg:h-17 flex items-center justify-center bg-black border border-gray-100/10 text-white rounded-full text-lg lg:text-xl font-bold'>
-                    <span className='absolute transition-all duration-300 cubic-bounce group-hover:-translate-y-[350%]'>
-                        dodaj
-                    </span>
-                    <span className='absolute translate-y-[350%] transition-all duration-300 cubic-bounce group-hover:translate-y-0 whitespace-nowrap px-4'>
-                        u torbu
-                    </span>
+                    <button onClick={addProductToCart} aria-label="Dodaj u torbu" className='relative overflow-hidden cursor-pointer uppercase w-64 lg:w-70 h-16 lg:h-17 flex items-center justify-center bg-black border border-gray-100/10 text-white rounded-full text-lg lg:text-xl font-bold'>
+                        <span className='absolute transition-all duration-300 cubic-bounce group-hover:-translate-y-[350%]'>
+                            dodaj
+                        </span>
+                        <span className='absolute translate-y-[350%] transition-all duration-300 cubic-bounce group-hover:translate-y-0 whitespace-nowrap px-4'>
+                            u torbu
+                        </span>
                     </button>
                     <div className='relative overflow-hidden p-3 lg:p-3 rounded-full bg-black border border-gray-100/10 text-white h-16 lg:h-17 w-16 lg:w-17 flex items-center justify-center shrink-0'>
                         <ShoppingBag className='scale-100 lg:scale-80 transition-all duration-300 cubic-bounce group-hover:scale-95' />

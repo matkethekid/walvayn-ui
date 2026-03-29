@@ -1,9 +1,8 @@
 "use client";
 
-import dynamic from "next/dynamic";
-
-const Sale = dynamic(() => import("./SaleComponent"), { ssr: false });
+import SaleComponent from "./SaleComponent";
 
 export default function ClientOnlySale() {
-  return <Sale />;
+  const items: any = [];
+  return <SaleComponent itemsInCollection={items} />;
 }

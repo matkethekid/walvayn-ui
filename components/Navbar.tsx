@@ -7,6 +7,7 @@ import { HR } from "country-flag-icons/react/3x2";
 import { Menu, ShoppingBag, X } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { useCartStore } from "@/app/store/shoppingCart";
 
 const gudlakExtraBold = localFont({
   src: "../app/fonts/GudlakExtraBold.woff2",
@@ -20,6 +21,7 @@ const Navbar = () => {
     { id: 3, name: "kontakt", href: "/kontakt" },
   ];
   const [isSidebarOpened, setIsSidebarOpened] = useState<boolean>(false);
+  const totalItems = useCartStore(state => state.totalItems);
   return (
     <nav className="sticky z-50 top-0 w-full pt-5 pb-5 pl-10 pr-10 bg-white flex flex-col lg:flex-row items-center justify-between">
       <div className="flex flex-row justify-between items-center w-full lg:w-auto">
@@ -47,7 +49,7 @@ const Navbar = () => {
       <div className="hidden lg:flex flex-row items-center justify-center">
         <div className="relative">
           <ShoppingBag size={37}/>
-          <div className={`bg-black rounded-full w-5 h-5 absolute top-0 right-0 text-white text-[0.7rem] text-center flex justify-center items-center`}><span>12</span></div>
+          <div className="bg-black rounded-full w-5 h-5 absolute top-0 right-0 text-white text-[0.7rem] flex items-center justify-center leading-none">{totalItems}</div>
         </div>
       </div>
       <div className={isSidebarOpened ? "fixed top-0 left-0 flex flex-col bg-black w-screen h-screen z-100 text-white" : "hidden"}>

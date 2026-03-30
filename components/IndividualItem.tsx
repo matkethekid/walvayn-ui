@@ -19,7 +19,7 @@ interface Item {
     sex: string;
     collection: string;
     sizes: string[];
-    images: string[];
+    images: string;
     freeShipping: boolean;
     description: string;
 };
@@ -51,7 +51,12 @@ const inter = Inter({
 });
 
 const IndividualItem = ({ item }: Props) => {
-    const images = Array.isArray(item.images) ? item.images : JSON.parse(item.images || '[]');
+    const images: string[] =
+        typeof item.images === "string"
+            ? JSON.parse(item.images)
+            : Array.isArray(item.images)
+            ? item.images
+            : [];
     const [selectedImage, setSelectedImage] = useState(images[0] || '');
     const [selectedSize, setSelectedSize] = useState<string>(item.sizes[0] ||"");
     const addToCart = useCartStore(state => state.addToCart);

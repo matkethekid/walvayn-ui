@@ -208,3 +208,24 @@ html.lenis, html.lenis body {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1; /* thumb color / track color */
+}
+
+/* Webkit (Chrome, Edge, Safari) */
+*::-webkit-scrollbar {
+  width: 6px;  /* širina vertikalnog scrolla */
+  height: 6px; /* visina horizontalnog scrolla */
+}
+
+*::-webkit-scrollbar-track {
+  background: #f1f1f1;  /* boja trake */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #888;  /* boja scroll “thumb” */
+  border-radius: 10px;     /* zaokruži */
+  border: 2px solid #f1f1f1; /* padding unutar scrolla */
+}
